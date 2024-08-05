@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const colors_1 = require("colors");
 const models_1 = require("./models");
 const helpers_1 = require("./helpers");
+const Excersise_2_1 = require("./models/Excersise-2");
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         let option;
@@ -40,9 +41,28 @@ function main() {
                     excersise.isPalindrome(name);
                     break;
                 case 3:
+                    const sentenceToAnalyze = yield (0, helpers_1.sentence)();
+                    const wordTofind = yield (0, helpers_1.word)();
+                    if (!isNaN(parseInt(sentenceToAnalyze)) || !isNaN(parseInt(wordTofind))) {
+                        console.log('\n');
+                        console.log((0, colors_1.green)('Please enter a valid sentence or name'));
+                        break;
+                    }
                     console.log('\n');
-                    console.log((0, colors_1.green)(`Option Selected ${option}`));
+                    excersise.isWordInSentence(sentenceToAnalyze, wordTofind);
                     break;
+                case 4:
+                    const wordToInvert = yield (0, helpers_1.word)();
+                    excersise.inverseString(wordToInvert);
+                    break;
+                case 5:
+                    const num = yield (0, helpers_1.value)();
+                    const percent = yield (0, helpers_1.valuePercent)();
+                    if (isNaN(parseInt(num)) || isNaN(parseInt(percent))) {
+                        console.log('\n');
+                        console.log('Please incert valid values');
+                    }
+                    excersise.numberPercent(parseInt(percent), parseInt(num));
                 default:
                     console.log('\n');
                     console.log(`Not a valid option`);
@@ -52,5 +72,7 @@ function main() {
         } while (option !== 0);
     });
 }
-main();
+const excersise = new models_1.Excercises();
+const excersises = new Excersise_2_1.Excersise2();
+excersises.sawMovies();
 //# sourceMappingURL=main.js.map

@@ -1,6 +1,6 @@
 
 import { input, select } from "@inquirer/prompts";
-import { blue, green, yellow } from "colors";
+import { green, yellow } from "colors";
 
 export const menu = async () => {
 
@@ -14,12 +14,20 @@ export const menu = async () => {
                 value: 1,
             },
             {
-                name: '2. Addition table',
+                name: '2. Is a palindrome word',
                 value: 2,
             },
             {
-                name: '3. Susbtraction table',
+                name: '3. How many times ther word appers in a sentence',
                 value: 3,
+            },
+            {
+                name: '4. Inverse a letter',
+                value: 4,
+            },
+            {
+                name: '5. Percent % of the value',
+                value: 5,
             },
             {
                 name: '0. Exit',
@@ -70,5 +78,50 @@ export const stop = async () => {
 
     console.log(`\n`);
     await input(action);
+}
 
+
+export const sentence = async ()=> {
+
+    const action = {
+        type: 'input',
+        message: 'Introduce the sentence'
+    }
+
+    const sentence = await input(action);
+    return sentence;
+}
+
+export const word = async ()=> {
+
+    const action = {
+        type: 'input',
+        message: 'Introduce the word'
+    }
+
+    const sentence = await input(action);
+    return sentence;
+}
+
+
+export const value = async () => {
+
+    const action = {
+        type: 'input',
+        message: 'Please introduce de value',
+    }
+
+    const value = await input(action);
+    return value;
+}
+
+export const valuePercent = async () => {
+
+    const action = {
+        type: 'input',
+        message: 'Please introduce de percent (%)',
+    }
+
+    const percent = await input(action);
+    return percent;
 }

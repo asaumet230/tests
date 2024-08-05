@@ -1,7 +1,16 @@
 import { green } from "colors";
 
 import { Excercises } from "./models";
-import { menu, multipleNumber, palindromeName, stop } from "./helpers";
+import { 
+    menu, 
+    multipleNumber, 
+    palindromeName, 
+    sentence, 
+    stop, 
+    value, 
+    valuePercent, 
+    word } from "./helpers";
+import { Excersise2 } from "./models/Excersise-2";
 
 
 async function main() {
@@ -44,9 +53,36 @@ async function main() {
                 break;
 
             case 3:
+                const sentenceToAnalyze = await sentence();
+                const wordTofind = await word();
+
+                if( !isNaN(parseInt(sentenceToAnalyze)) || !isNaN(parseInt(wordTofind)) ) {
+                    console.log('\n');
+                    console.log(green('Please enter a valid sentence or name'));
+                    break;
+                }
+
                 console.log('\n');
-                console.log( green(`Option Selected ${option}`));
+                excersise.isWordInSentence(sentenceToAnalyze, wordTofind);
                 break;
+
+            case 4:
+
+                const wordToInvert = await word();
+                excersise.inverseString(wordToInvert);
+                break;
+
+            case 5:
+
+                const num = await value();
+                const percent = await valuePercent();
+
+                if( isNaN(parseInt( num )) || isNaN(parseInt( percent )) ) {
+                    console.log('\n');
+                    console.log('Please incert valid values');
+                }
+
+                excersise.numberPercent( parseInt(percent), parseInt(num) );
         
             default:
                 console.log('\n');
@@ -60,4 +96,23 @@ async function main() {
 
 }
 
-main();
+// main();
+
+const excersise = new Excercises();
+const excersises = new Excersise2();
+
+// excersise.drawSquare(10);
+// excersise.oddNumbersInARange(1,100);
+// excersise.invertNumber(-78);
+// excersise.sameItemsArray();
+// excersise.drawLadder(10);
+// excersise.censureText('hola tontos', 'hola tontos que mas wey hola tontos');
+// excersise.numbersEightByEight(456);
+// excersise.divideArray([1,2,3,4,5,6,7,8], 3);
+// excersise.repeatString('andres', 4);
+// excersise.characterRepeat();
+// excersise.vowelsRepeat('vrgtykl');
+// excersises.mustiplesOfThreeAndFive(100);
+// excersises.divisorOfFive(10);
+
+excersises.sawMovies();

@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.stop = exports.palindromeName = exports.multipleNumber = exports.menu = void 0;
+exports.valuePercent = exports.value = exports.word = exports.sentence = exports.stop = exports.palindromeName = exports.multipleNumber = exports.menu = void 0;
 const prompts_1 = require("@inquirer/prompts");
 const colors_1 = require("colors");
 const menu = () => __awaiter(void 0, void 0, void 0, function* () {
@@ -23,12 +23,20 @@ const menu = () => __awaiter(void 0, void 0, void 0, function* () {
                 value: 1,
             },
             {
-                name: '2. Addition table',
+                name: '2. Is a palindrome word',
                 value: 2,
             },
             {
-                name: '3. Susbtraction table',
+                name: '3. How many times ther word appers in a sentence',
                 value: 3,
+            },
+            {
+                name: '4. Inverse a letter',
+                value: 4,
+            },
+            {
+                name: '5. Percent % of the value',
+                value: 5,
             },
             {
                 name: '0. Exit',
@@ -70,4 +78,40 @@ const stop = () => __awaiter(void 0, void 0, void 0, function* () {
     yield (0, prompts_1.input)(action);
 });
 exports.stop = stop;
+const sentence = () => __awaiter(void 0, void 0, void 0, function* () {
+    const action = {
+        type: 'input',
+        message: 'Introduce the sentence'
+    };
+    const sentence = yield (0, prompts_1.input)(action);
+    return sentence;
+});
+exports.sentence = sentence;
+const word = () => __awaiter(void 0, void 0, void 0, function* () {
+    const action = {
+        type: 'input',
+        message: 'Introduce the word'
+    };
+    const sentence = yield (0, prompts_1.input)(action);
+    return sentence;
+});
+exports.word = word;
+const value = () => __awaiter(void 0, void 0, void 0, function* () {
+    const action = {
+        type: 'input',
+        message: 'Please introduce de value',
+    };
+    const value = yield (0, prompts_1.input)(action);
+    return value;
+});
+exports.value = value;
+const valuePercent = () => __awaiter(void 0, void 0, void 0, function* () {
+    const action = {
+        type: 'input',
+        message: 'Please introduce de percent (%)',
+    };
+    const percent = yield (0, prompts_1.input)(action);
+    return percent;
+});
+exports.valuePercent = valuePercent;
 //# sourceMappingURL=inquires.js.map
